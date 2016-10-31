@@ -12,12 +12,13 @@ public class camerafollow : MonoBehaviour {
     public float xDifference;
     public float yDifference;
 
-    public float movementThreshold = 3;
+    public float movementThreshold = 2;
 
     void Start ()
     {
         //Change the Square to our player object. Whatever it's string name is.
         player = (GameObject.Find(focus)).transform;
+        movementThreshold = 2;
     }
 
 	void Update () {
