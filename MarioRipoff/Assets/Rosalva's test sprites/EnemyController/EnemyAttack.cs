@@ -9,6 +9,9 @@ public class EnemyAttack : MonoBehaviour {
     public float projectileSpeed = 1f;
     public AudioClip gunShot;
 
+
+    //figure this out
+    float threeshotfirerate = 2.5f;
     EnemyAI determineDirection;
 
 
@@ -24,6 +27,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             fBall_rg.velocity = new Vector3(projectileSpeed * -1, 0, 0);
         }
+        Destroy(fireBall, 2);
 
         //AudioSource.PlayClipAtPoint(gunShot,Guntip.position);
         
