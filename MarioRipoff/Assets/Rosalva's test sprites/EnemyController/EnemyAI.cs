@@ -6,14 +6,13 @@ public class EnemyAI : MonoBehaviour {
     Transform target;
     private Rigidbody2D rb;
     public bool CanMove = true;
-
     public bool facingRight = false;
 	
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Target").transform;
-	}
+    }
 	
 	
 	void FixedUpdate ()
@@ -34,7 +33,6 @@ public class EnemyAI : MonoBehaviour {
         {
             if (CanMove)
             {
-                print("Move Right");
                 rb.MovePosition(transform.position + Vector3.right * Time.deltaTime);
                 facingRight = true;
             }
@@ -43,7 +41,7 @@ public class EnemyAI : MonoBehaviour {
         {
             if (CanMove)
             {
-                print("Move Left");
+
                 rb.MovePosition(transform.position + Vector3.left * Time.deltaTime);
                 facingRight = false;
             }

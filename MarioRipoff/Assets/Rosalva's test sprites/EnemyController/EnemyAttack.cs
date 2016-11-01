@@ -3,17 +3,18 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
 
-    public Transform staffTip;
+    public Transform Guntip;
     public GameObject projectile;
     public float fireRate = 2f;
     public float projectileSpeed = 1f;
+    public AudioClip gunShot;
 
     EnemyAI determineDirection;
 
 
     void ProjectileAttack()
     {
-        GameObject fireBall = Instantiate(projectile, staffTip.transform.position, Quaternion.identity) as GameObject;
+        GameObject fireBall = Instantiate(projectile, Guntip.transform.position, Quaternion.identity) as GameObject;
         Rigidbody2D fBall_rg = fireBall.GetComponent<Rigidbody2D>();
         if (determineDirection.facingRight)
         {
@@ -23,6 +24,8 @@ public class EnemyAttack : MonoBehaviour {
         {
             fBall_rg.velocity = new Vector3(projectileSpeed * -1, 0, 0);
         }
+
+        //AudioSource.PlayClipAtPoint(gunShot,Guntip.position);
         
     }
 	
