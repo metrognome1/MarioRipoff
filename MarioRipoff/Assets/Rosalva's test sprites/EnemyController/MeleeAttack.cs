@@ -3,40 +3,66 @@ using System.Collections;
 
 public class MeleeAttack : MonoBehaviour
 {
+    private float startingX;
+    private float rightX;
 
     MeleeAI canAttack;
-    float attackRate = 5;
     public AudioClip kick;
 
-    private Animator anim;
+    private float attackTimer = 0;
+
+    private bool isAttacking;
+
+  
+     
+         
 
 
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         canAttack = GetComponent<MeleeAI>();
-        InvokeRepeating("DoAttack", .000001f, attackRate);
+    }
+
+    void FixedUpdate()
+    {
+        if (isAttacking == true)
+        { attackTimer += Time.fixedDeltaTime; }
+        print("AttackTimer: " + attackTimer);
+        DoAttack();
     }
 
     void DoAttack()
     {
-        //transform.position = transform.position + Vector3.down;
-        if (canAttack.CanMove == false)
+        if (attackTimer > 1.5f && canAttack.CanMove == false)
         {
-           // transform.localScale = new Vector3(-1, 1, 1);
-            anim.SetBool("Attacking", true);
-           // AudioSource.PlayClipAtPoint(kick, transform.position);
+            attackTimer = 0f;
+            print("DamageEnemy");
+
         }
     }
 
-    void Update()
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if (canAttack.CanMove == true)
+        attackTimer = 0;
+        
+    }
+
+    void OnTriggerStay2D(Collider2D coll)
+    {
+
+        if (coll.gameObject.tag == "mEnemyDistance")
         {
-            anim.SetBool("Attacking", false);
+            isAttacking = true;
+            attackTimer += Time.deltaTime;
         }
     }
+
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        isAttacking = false;
+    }
+
 
 }
 

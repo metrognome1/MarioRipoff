@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour {
     void FixedUpdate()
     {
 
-        print(Time.fixedDeltaTime);
+       // print(Time.fixedDeltaTime);
         TimeLeft -= Time.fixedDeltaTime;
         changeNumber += 1;
         if (changeNumber == 50)
