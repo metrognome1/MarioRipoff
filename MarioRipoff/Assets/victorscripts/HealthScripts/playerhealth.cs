@@ -15,18 +15,17 @@ public class playerhealth : MonoBehaviour, IDamageable {
         //This condition can be replaced for what we choose to do on deaths
         if (health <= 0)
         {
-            Debug.Log("おまえはもう死んでる");
-            Destroy(gameObject, 3f);
+            kill();
         }
     }
 
-    //public void die()
-    //{
-    //    Debug.Log("お前はもう死んでる");
-    //    Destroy(gameObject, 3f);
-    //}
     public void TakeDamage(int damage)
     {
         health -= damage;
+    }
+
+    private void kill() {
+        Debug.Log("Died");
+        Destroy(gameObject);
     }
 }

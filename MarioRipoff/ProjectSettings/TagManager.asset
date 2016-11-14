@@ -10,6 +10,8 @@ TagManager:
   - mEnemyDistance
   - UItime
   - UIscore
+  - Weapon
+  - projectile
   layers:
   - Default
   - TransparentFX

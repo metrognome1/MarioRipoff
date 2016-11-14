@@ -15,5 +15,13 @@ public class damageSource : MonoBehaviour
         {
             hit.TakeDamage(damage);
         }
+        //it might be better to place code that destroys projectiles elsewhere
+        //the biggest problem is for projectiles that are not damage sources
+        if (gameObject.tag == "projectile")
+            //For non array ammo version
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+
+
     }
 }

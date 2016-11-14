@@ -3,10 +3,10 @@ using System.Collections;
 
 public class testControllerScript : MonoBehaviour {
     public float maxSpeed = 6f;
-    bool facingRight = true;
+    public bool facingRight = true;
     Animator anim;
     Rigidbody2D rBody;
-    bool grounded = false;
+    public bool grounded = false;
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;

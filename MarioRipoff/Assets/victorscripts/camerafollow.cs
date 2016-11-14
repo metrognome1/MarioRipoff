@@ -6,7 +6,7 @@ public class camerafollow : MonoBehaviour {
     private Transform player;
     private Vector3 moveTemp;
 
-    public string focus = "Square";
+    public GameObject focus;
 
     public float speed = 3;
     public float xDifference;
@@ -17,7 +17,7 @@ public class camerafollow : MonoBehaviour {
     void Start ()
     {
         //Change the Square to our player object. Whatever it's string name is.
-        player = (GameObject.Find(focus)).transform;
+        player = focus.transform;
         movementThreshold = 2;
     }
 

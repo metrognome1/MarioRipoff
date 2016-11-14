@@ -20,7 +20,6 @@ public class playerShoot : MonoBehaviour {
         if (shootable == null)
             Debug.Log("No weapon");
         else {
-            Debug.Log("Has weapon");
             if (Input.GetButton("Fire1") && Input.GetAxis("Vertical") > 0) {
                 shootable.Shoot(Vector2.up);
             }
