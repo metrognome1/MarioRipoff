@@ -35,6 +35,7 @@ public class testControllerScript : MonoBehaviour {
     }
     void Update()
     {
+        //use getbutton instead of getkeydown
         if(grounded && Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Ground", false);
