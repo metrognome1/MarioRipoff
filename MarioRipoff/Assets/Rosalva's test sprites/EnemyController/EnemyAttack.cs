@@ -6,10 +6,15 @@ public class EnemyAttack : MonoBehaviour {
     public Transform Guntip;
     public GameObject projectile;
     public float fireRate = 2f;
-    public float projectileSpeed = 1f;
+
+
+    public float projectileSpeed = 2f;
     public AudioClip gunShot;
 
+
+
     EnemyAI determineDirection;
+    private Animator anim;
 
 
     void ProjectileAttack()
@@ -24,18 +29,36 @@ public class EnemyAttack : MonoBehaviour {
         {
             fBall_rg.velocity = new Vector3(projectileSpeed * -1, 0, 0);
         }
+        Destroy(fireBall, 3);
 
-        //AudioSource.PlayClipAtPoint(gunShot,Guntip.position);
-        
+
+        AudioSource.PlayClipAtPoint(gunShot, Guntip.position);
+
     }
 	
-	// Update is called once per frame
+
 	void Start ()
     {
+        anim = GetComponent<Animator>();
+        // anim.setbool("isShooting", true)
         determineDirection = GetComponent<EnemyAI>();
-        
 
-        InvokeRepeating("ProjectileAttack", .1f, fireRate);
-	
+        InvokeRepeating("Fire", .000001f, fireRate);
+        
 	}
+
+
+    void Fire()
+    {
+
+        if (determineDirection.CanMove == false)
+        {
+            ProjectileAttack();
+        }
+
+    }
+
+
+
+
 }

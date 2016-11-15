@@ -7,9 +7,13 @@ public class EnemyAI : MonoBehaviour {
     private Rigidbody2D rb;
     public bool CanMove = true;
     public bool facingRight = false;
+
+
+    private Animator anim;
 	
 	void Start ()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Target").transform;
     }
@@ -17,6 +21,14 @@ public class EnemyAI : MonoBehaviour {
 	
 	void FixedUpdate ()
     {
+        if (CanMove == true)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else { anim.SetBool("isRunning", false); }
+
+
+
         if (facingRight == true)
         {
             transform.localScale = new Vector3(1, 1, 1);
