@@ -6,11 +6,17 @@ public class testControllerScript : MonoBehaviour {
     public bool facingRight = true;
     Animator anim;
     Rigidbody2D rBody;
+
     public bool grounded = false;
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
-    public float jumpForce = 500f;
+
+    //public float jumpForce = 500f;
+    public float jumpHeld = 0.0f;
+    public float fullJumpTime = 1.2f;
+    public float minJump = 0.5f;
+    public float maxJump = 2.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +25,6 @@ public class testControllerScript : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
 	void FixedUpdate () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         anim.SetBool("Ground", grounded);
@@ -33,14 +38,34 @@ public class testControllerScript : MonoBehaviour {
             Flip();
 
     }
+    // Update is called once per frame
     void Update()
     {
         //use getbutton instead of getkeydown
         if(grounded && Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetBool("Ground", false);
-            rBody.AddForce(new Vector2(0, jumpForce));
+            //anim.SetBool("Ground", false);
+            jumpHeld = 0f;
+            //rBody.AddForce(new Vector2(0, jumpForce));
         }
+        if(Input.GetKey(KeyCode.Space))
+        {
+            jumpHeld += Time.deltaTime;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            anim.SetBool("Ground", false);
+            jump();
+        }
+    }
+    void jump()
+    {
+        float jumping = ((maxJump - minJump) * (jumpHeld / fullJumpTime)) + minJump;
+        if (jumping > maxJump)
+        {
+            jumping = maxJump;
+        }
+        rBody.AddForce(new Vector2(0, jumping),ForceMode2D.Impulse);
     }
     void Flip()
     {

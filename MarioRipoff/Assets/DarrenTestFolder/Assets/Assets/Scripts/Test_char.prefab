@@ -82,7 +82,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013404660536}
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 0.4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -148,11 +148,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
+  facingRight: 1
+  grounded: 0
   groundCheck: {fileID: 4000013731612350}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4294967039
-  jumpForce: 700
+  jumpHeld: 0
+  fullJumpTime: 2
+  minJump: 0.5
+  maxJump: 5
 --- !u!212 &212000010556839034
 SpriteRenderer:
   m_ObjectHideFlags: 1
