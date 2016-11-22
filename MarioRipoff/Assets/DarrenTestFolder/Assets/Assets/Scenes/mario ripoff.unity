@@ -206,6 +206,49 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011408615868, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: maxJump
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011408615868, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: fullJumpTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011408615868, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: minJump
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011408615868, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011408615868, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 820224522}
+    - target: {fileID: 114000011408615868, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: whatIsGround.m_Bits
+      value: 4294966783
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010551870148, guid: bdeac92c4f6d81b4786bd78d66da0e63, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013404660536, guid: bdeac92c4f6d81b4786bd78d66da0e63, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 50000013897549724, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdeac92c4f6d81b4786bd78d66da0e63, type: 2}
   m_IsPrefabParent: 0
@@ -373,3 +416,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!4 &820224522 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013731612350, guid: bdeac92c4f6d81b4786bd78d66da0e63,
+    type: 2}
+  m_PrefabInternal: {fileID: 338523124}

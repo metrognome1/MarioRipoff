@@ -14,9 +14,9 @@ public class testControllerScript : MonoBehaviour {
 
     //public float jumpForce = 500f;
     public float jumpHeld = 0.0f;
-    public float fullJumpTime = 1.2f;
-    public float minJump = 0.5f;
-    public float maxJump = 2.0f;
+    public float fullJumpTime = 0.8f;
+    public float minJump = 0.2f;
+    public float maxJump = 0.8f;
 
 	// Use this for initialization
 	void Start () {
@@ -29,43 +29,47 @@ public class testControllerScript : MonoBehaviour {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         anim.SetBool("Ground", grounded);
         anim.SetFloat("Speed", rBody.velocity.y);
-        float move = Input.GetAxis("Horizontal");
-        anim.SetFloat("Speed", Mathf.Abs(move));
-        rBody.velocity = new Vector2(move * maxSpeed, rBody.velocity.y);
-        if (move > 0 && !facingRight)
-            Flip();
-        else if (move < 0 && facingRight)
-            Flip();
-
+        anim.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+        
     }
     // Update is called once per frame
     void Update()
     {
-        //use getbutton instead of getkeydown
-        if(grounded && Input.GetKeyDown(KeyCode.Space))
+        float move = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            //anim.SetBool("Ground", false);
-            jumpHeld = 0f;
-            //rBody.AddForce(new Vector2(0, jumpForce));
+            rBody.velocity = new Vector2(move * maxSpeed, rBody.velocity.y);
         }
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            rBody.velocity = new Vector2(move * maxSpeed, rBody.velocity.y);
+        }
+        if (move > 0 && !facingRight)
+            Flip();
+        else if (move < 0 && facingRight)
+            Flip();
+        if (grounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetBool("Ground", false);
+            jumpHeld = 0.01f;
+            rBody.AddForce(new Vector2(0, maxJump), ForceMode2D.Impulse);
+            //jump();
+        }
+        if (Input.GetKey(KeyCode.Space))
         {
             jumpHeld += Time.deltaTime;
+            if (jumpHeld < fullJumpTime)
+                jump();
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            anim.SetBool("Ground", false);
-            jump();
+            jumpHeld = 0f;
         }
     }
     void jump()
     {
-        float jumping = ((maxJump - minJump) * (jumpHeld / fullJumpTime)) + minJump;
-        if (jumping > maxJump)
-        {
-            jumping = maxJump;
-        }
-        rBody.AddForce(new Vector2(0, jumping),ForceMode2D.Impulse);
+        float jumping = maxJump - jumpHeld;
+        rBody.AddForce(new Vector2(0, jumping), ForceMode2D.Impulse);
     }
     void Flip()
     {
