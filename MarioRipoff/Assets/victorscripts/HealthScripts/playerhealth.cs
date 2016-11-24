@@ -25,7 +25,6 @@ public class playerhealth : MonoBehaviour, IDamageable {
     }
 
     private void kill() {
-        Debug.Log("Died");
         Destroy(gameObject);
     }
 }

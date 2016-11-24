@@ -26,9 +26,10 @@ GameObject:
   - 95: {fileID: 95000012217835448}
   - 114: {fileID: 114000012786833130}
   - 114: {fileID: 114000012500962838}
+  - 114: {fileID: 114000013377858562}
   m_Layer: 8
   m_Name: victor_test_char
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011132247256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0986664, y: -1.6788807, z: 0}
+  m_LocalPosition: {x: -2.19, y: 1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -102,8 +103,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011698729580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 0.06713462, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0.114, y: -0.058, z: 0}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013729375894}
@@ -208,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc411772b0a8394fa20ac3c4cac1601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 10
+  fireRate: 5
   projectile: {fileID: 1000010004357100, guid: c6db664ad5d77ef49868566dd89d1a62, type: 2}
   projectileSpeed: 10
   clipSize: 20
@@ -243,7 +244,22 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4294967039
-  jumpForce: 350
+  jumpHeld: 0
+  fullJumpTime: 0.5
+  minJump: 0.2
+  maxJump: 1
+--- !u!114 &114000013377858562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011132247256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d4e7cd8f567734499479ba27b29eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!212 &212000011541590922
 SpriteRenderer:
   m_ObjectHideFlags: 1

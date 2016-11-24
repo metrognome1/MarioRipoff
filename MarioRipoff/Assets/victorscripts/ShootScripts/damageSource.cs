@@ -5,11 +5,12 @@ public class damageSource : MonoBehaviour
 {
 
     public int damage = 1;
+    public int knockForce = 2;
+    public LayerMask hittable;
     // Use this for initialization
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Collided");
         IDamageable hit = (IDamageable)col.gameObject.GetComponent(typeof(IDamageable));
         if (hit != null)
         {
@@ -21,6 +22,12 @@ public class damageSource : MonoBehaviour
             //For non array ammo version
             //Destroy(gameObject);
             gameObject.SetActive(false);
+
+        IKnockbackable knock = col.gameObject.GetComponent<IKnockbackable>();
+        if (knock != null) {
+            knock.Knockback(gameObject.transform.position.x, knockForce);
+        }
+
 
 
     }

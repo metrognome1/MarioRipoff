@@ -27,7 +27,6 @@ public class defaultGun : MonoBehaviour, IShootable {
 
     public void Shoot(Vector2 direction) {
         if (fireRate == 0) {
-            Debug.Log("Entered shoot");
             makeProjectile(direction);
 
         }
@@ -40,22 +39,13 @@ public class defaultGun : MonoBehaviour, IShootable {
 
     }
 
-    //void makeProjectile(Vector2 direction) {
-    //    GameObject shot = Instantiate(projectile, firePoint.transform.position, Quaternion.identity) as GameObject;
-    //    Rigidbody2D shot_rg = shot.GetComponent<Rigidbody2D>();
-    //    shot_rg.velocity = direction * projectileSpeed;
-    //}
-
     //This version of makeProjectile makes bullets until it fills the ammoClip
     //After that point it just calls sets them active. 
     void makeProjectile(Vector2 direction) {
-        Debug.Log(ammoClip[ammoIndex]);
         //Checks if the ammo clip is full or not
         if (ammoClip[ammoIndex] == null) {
             GameObject shot = Instantiate(projectile, firePoint.transform.position, Quaternion.identity) as GameObject;
-            Debug.Log(shot);
             Rigidbody2D shot_rg = shot.GetComponent<Rigidbody2D>();
-            Debug.Log(shot_rg);
             ammoClip[ammoIndex] = shot;
             ammo_rg[ammoIndex] = shot_rg;
         }

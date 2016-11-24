@@ -3,7 +3,8 @@ using System.Collections;
 
 public class projectile : MonoBehaviour {
 
-	// Use this for initialization
+    public LayerMask toHit;
+
 	void Start () {
 	
 	}

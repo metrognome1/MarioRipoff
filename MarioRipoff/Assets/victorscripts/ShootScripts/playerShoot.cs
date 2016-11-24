@@ -12,7 +12,6 @@ public class playerShoot : MonoBehaviour {
     void Start () {
         shootable = weapon.GetComponent<IShootable>();
         playermove = gameObject.GetComponent<testControllerScript>();
-
     }
 
 	// Update is called once per frame
@@ -34,9 +33,6 @@ public class playerShoot : MonoBehaviour {
             else if (Input.GetButton("Fire1") && !playermove.facingRight) {
                 shootable.Shoot(Vector2.left);
             }
-                
         }
-	    
 	}
-
 }
