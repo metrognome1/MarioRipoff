@@ -6,6 +6,14 @@ public class enemyBody : MonoBehaviour {
     public Transform playerTransform;
     public string targetTag = "Player";
 
+    void OnEnable() {
+        playerHealth.onDeath += Disable;
+    }
+
+    void OnDisable() {
+        playerHealth.onDeath -= Disable;
+    }
+
     //Need to add some way to populate the playerTransform without having to drag and drop
     void Start() {
         if (playerTransform == null) {
@@ -30,5 +38,10 @@ public class enemyBody : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
 
+    }
+
+    //Disables this component
+    void Disable() {
+        this.enabled = false;
     }
 }

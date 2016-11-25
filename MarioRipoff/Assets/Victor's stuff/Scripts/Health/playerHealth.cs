@@ -3,6 +3,9 @@ using System.Collections;
 
 public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillable {
     // change to private eventually
+    public delegate void respawn();
+    public static event respawn onDeath;
+
     public int health = 100;
 
     Rigidbody2D playerRigid;
@@ -22,6 +25,7 @@ public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillabl
         if (health <= 0)
         {
             kill();
+            //Creates onDeath() event
         }
     }
 
@@ -34,6 +38,10 @@ public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillabl
 
     private void kill() {
         //Call some sort of death animation here
+        if (onDeath != null) {
+            Debug.Log("Entered death in player");
+            onDeath();
+        }
         Destroy(gameObject);
     }
 

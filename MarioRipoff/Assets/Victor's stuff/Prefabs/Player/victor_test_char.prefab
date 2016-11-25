@@ -258,9 +258,9 @@ MonoBehaviour:
     m_Bits: 2055
   jumpHeld: 0
   fullJumpTime: 0.5
-  minJump: 6
+  minJump: 4
   maxJump: 10
-  extendJump: 70
+  extendJump: 1.5
 --- !u!212 &212000011541590922
 SpriteRenderer:
   m_ObjectHideFlags: 1

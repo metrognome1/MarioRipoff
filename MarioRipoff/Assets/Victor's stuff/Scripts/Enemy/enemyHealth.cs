@@ -5,6 +5,15 @@ public class enemyHealth : MonoBehaviour, IDamageable, IStompable, IKnockbackabl
     public int health = 10;
     Rigidbody2D enemyRigid;
     Transform objectTransform;
+
+    void OnEnable () {
+        EnemyManager.EnemyCount += 1; 
+    }
+
+    void OnDisable () {
+        EnemyManager.EnemyCount -= 1;
+    }
+
         
 
 	void Start () {

@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class camerafollow : MonoBehaviour {
+    
 
     public GameObject focus;
     public float xDifference;
@@ -12,6 +13,13 @@ public class camerafollow : MonoBehaviour {
     private Vector3 moveTemp;
     private Rigidbody2D playerRg2D;
 
+    void OnEnable() {
+        playerHealth.onDeath += Disable;
+    }
+
+    void OnDisable() {
+        playerHealth.onDeath -= Disable;
+    }
 
     void Start ()
     {
@@ -43,5 +51,10 @@ public class camerafollow : MonoBehaviour {
             moveTemp.z = -1;
             transform.position = Vector3.MoveTowards(transform.position, moveTemp, playerRg2D.velocity.magnitude * Time.deltaTime);
         }
+    }
+
+    //Disables this component
+    void Disable() {
+        this.enabled = false;
     }
 }
