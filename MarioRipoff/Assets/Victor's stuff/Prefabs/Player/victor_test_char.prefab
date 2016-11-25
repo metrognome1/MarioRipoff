@@ -24,9 +24,9 @@ GameObject:
   - 58: {fileID: 58000010239883964}
   - 61: {fileID: 61000014030740924}
   - 95: {fileID: 95000012217835448}
-  - 114: {fileID: 114000012786833130}
   - 114: {fileID: 114000012500962838}
   - 114: {fileID: 114000013377858562}
+  - 114: {fileID: 114000013614549598}
   m_Layer: 8
   m_Name: victor_test_char
   m_TagString: Player
@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011132247256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.19, y: 1.49, z: 0}
+  m_LocalPosition: {x: -1, y: 2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011698729580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.114, y: -0.058, z: 0}
+  m_LocalPosition: {x: 0.262, y: 0.003, z: 0}
   m_LocalScale: {x: 0.13, y: 0.13, z: 0.2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -117,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011367445356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2144, y: -0.4026, z: 0.0390625}
+  m_LocalPosition: {x: -0.06, y: -0.342, z: 0.0390625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -130,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011172386442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0.669, z: 0}
+  m_LocalPosition: {x: 0.09, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -145,9 +145,9 @@ Rigidbody2D:
   m_GameObject: {fileID: 1000011132247256}
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -164,7 +164,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.215, y: -0.28}
+  m_Offset: {x: -0.01, y: -0.19}
   serializedVersion: 2
   m_Radius: 0.12
 --- !u!61 &61000014030740924
@@ -178,7 +178,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.19, y: 0}
+  m_Offset: {x: -0.01, y: 0.06}
   serializedVersion: 2
   m_Size: {x: 0.33, y: 0.48}
 --- !u!95 &95000012217835448
@@ -226,28 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1000011698729580}
---- !u!114 &114000012786833130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011132247256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339987e172e937d449135d63f92adc34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 5
-  facingRight: 1
-  grounded: 1
-  groundCheck: {fileID: 4000013127851650}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 4294967039
-  jumpHeld: 0
-  fullJumpTime: 0.5
-  minJump: 0.2
-  maxJump: 1
 --- !u!114 &114000013377858562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,6 +238,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+--- !u!114 &114000013614549598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011132247256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921982ca0b5ed2345bbe6aeb2673a6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+  facingRight: 1
+  grounded: 0
+  groundCheck: {fileID: 4000013127851650}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 2055
+  jumpHeld: 0
+  fullJumpTime: 0.5
+  minJump: 6
+  maxJump: 10
+  extendJump: 70
 --- !u!212 &212000011541590922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -322,7 +323,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fff8224e144b37d4caae03334de40a53, type: 3}
+  m_Sprite: {fileID: 21300038, guid: 821fa538c2bb08545a7251fa91fd720e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

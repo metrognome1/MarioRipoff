@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerHealth1 : MonoBehaviour, IDamageable, IKnockbackable, IKillable {
+public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillable {
     // change to private eventually
     public int health = 100;
 

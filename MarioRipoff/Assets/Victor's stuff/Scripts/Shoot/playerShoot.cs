@@ -7,11 +7,11 @@ public class playerShoot : MonoBehaviour {
 //    public LayerMask toHit;
     public GameObject weapon;
     IShootable shootable;
-    testControllerScript playermove;
+    modifiedMove playermove;
 
     void Start () {
         shootable = weapon.GetComponent<IShootable>();
-        playermove = gameObject.GetComponent<testControllerScript>();
+        playermove = gameObject.GetComponent<modifiedMove>();
     }
 
 	// Update is called once per frame
