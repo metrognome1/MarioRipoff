@@ -6,6 +6,8 @@ public class HelicopterBehavior : MonoBehaviour {
     public Transform leftEnd;
     public Transform rightEnd;
 
+    public GameObject graphics;
+
     public float velocity = 5;
 
     private Rigidbody2D rb2D;
@@ -66,7 +68,7 @@ public class HelicopterBehavior : MonoBehaviour {
 
 
     //death
-    private bool dead = false;
+    public bool dead = false;
     void Dead()
     {
         if (dead)
@@ -75,7 +77,14 @@ public class HelicopterBehavior : MonoBehaviour {
            
         }
     }
-    //
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (dead)
+        {
+            graphics.GetComponent<Animator>().SetBool("helicopterFell",true);
+        }
+    }
 
 
 	
