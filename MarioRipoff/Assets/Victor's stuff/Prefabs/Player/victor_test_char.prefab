@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 114000012500962838}
   - 114: {fileID: 114000013377858562}
   - 114: {fileID: 114000013614549598}
+  - 114: {fileID: 114000014074223896}
   m_Layer: 8
   m_Name: victor_test_char
   m_TagString: Player
@@ -260,7 +261,18 @@ MonoBehaviour:
   fullJumpTime: 0.5
   minJump: 4
   maxJump: 10
-  extendJump: 1.5
+  extendJump: 3
+--- !u!114 &114000014074223896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011132247256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4f5b387e9eccf468476049f2d381c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000011541590922
 SpriteRenderer:
   m_ObjectHideFlags: 1
