@@ -2,21 +2,13 @@
 using System.Collections;
 
 public class HelicopterBehavior : MonoBehaviour {
-    //for the boundaries of helicopter movement
-    public Transform leftEnd;
-    public Transform rightEnd;
-
+    //not used yet
     public GameObject graphics;
 
-    public float velocity = 5;
+    // test
+    private Animator anim;
 
     private Rigidbody2D rb2D;
-
-    //control the movement
-    private bool movingLeft = false;
-    private float pauseTime = 1;
-    private float timePaused;
-    private bool stayPaused = false;
 
     public GameObject bombPrefab;
     public Transform bombSpawn;
@@ -28,14 +20,38 @@ public class HelicopterBehavior : MonoBehaviour {
     //where bullets should shoot
     private Transform Player;
 
+    void handleMovements()
+    {
+        int number = Random.Range(0,10);
+        if (number < 6) //loop
+        {
+            anim.SetBool("movingHorizontally", true);
+            anim.SetBool("movingVertically", true);
+            anim.SetBool("fakeOut", true);
+        }
+        else //wont loop
+        {
+            anim.SetBool("movingHorizontally", false);
+            anim.SetBool("movingVertically", false);
+            anim.SetBool("fakeOut",false);
+        }
+    }
+
+
+
+
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Target").transform;
+        anim = GetComponent<Animator>();
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
         rb2D = GetComponent<Rigidbody2D>();
 
         //helicopter attacks
         DropBomb();
         InvokeRepeating("ShootBullets", 2, .5f);
+
+        //movement
+        InvokeRepeating("handleMovements", 2, .5f);
     }
 
 
@@ -59,9 +75,7 @@ public class HelicopterBehavior : MonoBehaviour {
 
     void ShootBullets()
     {
-       
         GameObject Bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
-
         Rigidbody2D instantiatedRB = Bullet.GetComponent<Rigidbody2D>();
         instantiatedRB.AddForce(DetermineDirection());
     }
@@ -86,52 +100,4 @@ public class HelicopterBehavior : MonoBehaviour {
         }
     }
 
-
-	
-	
-	void Update () {
-        //moves the helicopter back and forth between the "end" transform positions
-        //makes the helicopter pause after it reaches one of the ends for a moment
-        
-
-        if (stayPaused)
-        {
-            timePaused += Time.fixedDeltaTime;
-            if (timePaused >= pauseTime)
-            {
-                stayPaused = false;
-                timePaused = 0;
-            }
-        }
-
-        else
-        {
-
-            if (movingLeft)
-            {
-               
-                transform.position += Vector3.left * velocity * Time.fixedDeltaTime;
-
-                if (transform.position.x <= leftEnd.position.x)
-                {
-                    movingLeft = false;
-                    stayPaused = true;
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
-            }
-
-            else
-            {
-               
-                transform.position += Vector3.right * velocity * Time.fixedDeltaTime;
-
-                if (transform.position.x >= rightEnd.position.x)
-                {
-                    movingLeft = true;
-                    stayPaused = true;
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
-            }
-        }
-    }
 }
