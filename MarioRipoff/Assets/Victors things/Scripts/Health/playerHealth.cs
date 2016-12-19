@@ -38,8 +38,8 @@ public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillabl
 
     private void kill() {
         //Call some sort of death animation here
+        //Using event to cause other things in the game to occur
         if (onDeath != null) {
-            Debug.Log("Entered death in player");
             onDeath();
         }
         Destroy(gameObject);

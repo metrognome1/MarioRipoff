@@ -9,17 +9,17 @@ public class modifiedMove : MonoBehaviour {
 
     public bool grounded = false;
     public Transform groundCheck;
-    float groundRadius = 0.2f;
+    float groundRadius = 0.1f;
     public LayerMask whatIsGround;
 
-    //public float jumpForce = 500f;
     public float jumpHeld = 0.0f;
     public float fullJumpTime = 0.8f;
     public float minJump = 0.2f;
-    public float maxJump = 0.8f;
     public float extendJump = 70;
+    public bool side_collision = false;
 
-	// Use this for initialization
+    private float side_col_thresh_dist = .14f;
+
 	void Start () {
         jumpHeld = 0.01f;
         anim = GetComponent<Animator>();
@@ -35,17 +35,11 @@ public class modifiedMove : MonoBehaviour {
         
     }
     // Update is called once per frame
-    void Update()
-    {
-        float move = Input.GetAxis("Horizontal");
-        if (move > 0)
-        {
+    void Update() {
+        float move = 0;
+        move = Input.GetAxis("Horizontal");
+        if (move != 0 && (!side_collision || grounded))
             rBody.velocity = new Vector2(move * maxSpeed, rBody.velocity.y);
-        }
-        if (move < 0)
-        {
-            rBody.velocity = new Vector2(move * maxSpeed, rBody.velocity.y);
-        }
 
         if (move > 0 && !facingRight)
             Flip();
@@ -54,24 +48,9 @@ public class modifiedMove : MonoBehaviour {
 
 
         if (grounded && Input.GetButtonDown("Jump")) {
-            //anim.SetBool("Ground", false);
-            //jump();
+            anim.SetBool("Ground", false);
             StartCoroutine(Jump());
         }
-
-        //Adds additional height to jumps.
-        //if (Input.GetButton("Jump") && rBody.velocity.y > 0) {
-        //    if (jumpHeld < fullJumpTime) {
-        //        jumpHeld += Time.deltaTime;
-        //        //The various kinds of extended jumps
-        //        //rBody.velocity += new Vector2(0f, maxJump * Time.deltaTime);
-        //        //rBody.AddForce(new Vector2(0, fullJumpTime - jumpHeld) * extendJump, ForceMode2D.Force);
-        //        rBody.AddForce(new Vector2(0, fullJumpTime - jumpHeld) * extendJump, ForceMode2D.Impulse);
-        //    }
-        //}
-        //if (Input.GetButtonUp("Jump")) {
-        //    jumpHeld = 0f;
-        //}
     }
 
     IEnumerator Jump() {
@@ -88,17 +67,31 @@ public class modifiedMove : MonoBehaviour {
         jumpHeld = 0f;
     }
 
-    void jump()
-    {
+    void jump() {
         float jumping = minJump + jumpHeld;
         rBody.AddForce(new Vector2(0, jumping), ForceMode2D.Impulse);
     }
 
-    void Flip()
-    {
+    void Flip() {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void OnCollisionStay2D(Collision2D col) {
+        //Checks distance between game object and contact position in x axis.
+        //.15 is hardcoded x distance threshold
+        if (Mathf.Abs(gameObject.transform.position.x - col.contacts[0].point.x) > side_col_thresh_dist) {
+            side_collision = true;
+        }
+        else {
+            side_collision = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col) {
+        if (side_collision == true)
+            side_collision = false;
     }
 }

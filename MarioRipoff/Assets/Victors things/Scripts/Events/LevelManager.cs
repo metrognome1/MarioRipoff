@@ -14,7 +14,6 @@ public class LevelManager : MonoBehaviour {
     }
 
     void restart() {
-        Debug.Log("Entered Restart in level manager");
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

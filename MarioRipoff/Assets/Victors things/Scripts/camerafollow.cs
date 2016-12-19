@@ -23,7 +23,6 @@ public class camerafollow : MonoBehaviour {
 
     void Start ()
     {
-        //Change the Square to our player object. Whatever it's string name is.
         player = focus.transform;
         playerRg2D = focus.GetComponent<Rigidbody2D>();
     }

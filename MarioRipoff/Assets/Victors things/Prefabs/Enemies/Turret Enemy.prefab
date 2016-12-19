@@ -41,7 +41,6 @@ GameObject:
   - 114: {fileID: 114000011059526156}
   - 114: {fileID: 114000010857450388}
   - 114: {fileID: 114000010000619496}
-  - 50: {fileID: 50000013742741882}
   m_Layer: 10
   m_Name: Turret Enemy
   m_TagString: Untagged
@@ -76,23 +75,6 @@ Transform:
   - {fileID: 4000011360006602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &50000013742741882
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013901684116}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
 --- !u!61 &61000010095162952
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -135,7 +117,7 @@ MonoBehaviour:
   projectile: {fileID: 1000010984060746, guid: 1d66ada9b0f08ae44ae38080485cb82d, type: 2}
   projectileSpeed: 500
   projLifetime: 1
-  fireDelay: 0.9
+  fireDelay: 2
 --- !u!114 &114000010857450388
 MonoBehaviour:
   m_ObjectHideFlags: 1

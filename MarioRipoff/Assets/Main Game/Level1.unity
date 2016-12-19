@@ -1226,11 +1226,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011644857780, guid: 93a406232f2e63a45895b42b75bc6488, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -23.16992
+      value: -23.52
       objectReference: {fileID: 0}
     - target: {fileID: 4000011644857780, guid: 93a406232f2e63a45895b42b75bc6488, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.7145716
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 4000011644857780, guid: 93a406232f2e63a45895b42b75bc6488, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1865,8 +1865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327b737ee0368c0449eec20eb7a2a6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1000012963183852, guid: f916a16694e21d347b37b1a97b58359e,
-    type: 2}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &532577563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,11 +3200,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011644857780, guid: 93a406232f2e63a45895b42b75bc6488, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -27.50534
+      value: -27.83
       objectReference: {fileID: 0}
     - target: {fileID: 4000011644857780, guid: 93a406232f2e63a45895b42b75bc6488, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.70399606
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4000011644857780, guid: 93a406232f2e63a45895b42b75bc6488, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6299,8 +6298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327b737ee0368c0449eec20eb7a2a6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1000012566624882, guid: 774fb78346f9b4048be5fe12622a8004,
-    type: 2}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1719726799
 GameObject:
   m_ObjectHideFlags: 0
@@ -8624,8 +8622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327b737ee0368c0449eec20eb7a2a6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1000012566624882, guid: 774fb78346f9b4048be5fe12622a8004,
-    type: 2}
+  enemyPrefab: {fileID: 0}
 --- !u!61 &2008571965
 BoxCollider2D:
   m_ObjectHideFlags: 0
