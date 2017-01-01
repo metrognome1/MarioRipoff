@@ -17,8 +17,8 @@ public class enemyBody : MonoBehaviour {
     //Need to add some way to populate the playerTransform without having to drag and drop
     void Start() {
         if (playerTransform == null) {
-        //playerTransform = GameObject.FindWithTag("Player").transform;
-        playerTransform = GameObject.FindWithTag(targetTag).transform;
+            //playerTransform = GameObject.FindWithTag("Player").transform;
+            playerTransform = GameObject.FindWithTag(targetTag).transform;
         }
 
     }

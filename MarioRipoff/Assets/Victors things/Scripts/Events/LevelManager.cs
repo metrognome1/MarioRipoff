@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
+    public GameObject loadingImage;
+
     void OnEnable() {
         playerHealth.onDeath += restart;
         NextLevel.onDoorEnter += loadNextLevel;
@@ -20,5 +22,10 @@ public class LevelManager : MonoBehaviour {
 
     void loadNextLevel() {
         SceneManager.LoadScene("Level2");
+    }
+    
+    public void LoadScene(int level) {
+        loadingImage.SetActive(true);
+        SceneManager.LoadScene(level);
     }
 }

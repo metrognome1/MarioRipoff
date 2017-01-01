@@ -11,26 +11,20 @@ public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillabl
     Rigidbody2D playerRigid;
     Transform objectTransform;
 
-    
-
-
 	void Start () {
         playerRigid = gameObject.GetComponent<Rigidbody2D>();
         objectTransform = gameObject.transform;
 	}
 	
-    void Update ()
-    {
+    void Update () {
         //This condition can be replaced for what we choose to do on deaths
-        if (health <= 0)
-        {
+        if (health <= 0) {
             kill();
             //Creates onDeath() event
         }
     }
 
-    public void TakeDamage(int damage)
-    {
+    public void TakeDamage(int damage) {
 
         health -= damage;
         invulnerable();
@@ -70,8 +64,6 @@ public class playerHealth : MonoBehaviour, IDamageable, IKnockbackable, IKillabl
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        
-
         //IStompable stomp = col.gameObject.GetComponent<IStompable>;
     }
 }

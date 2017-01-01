@@ -9,13 +9,12 @@ public class damageSource : MonoBehaviour
     public LayerMask hittable;
     // Use this for initialization
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
+    void OnCollisionEnter2D(Collision2D col) {
         IDamageable hit = (IDamageable)col.gameObject.GetComponent(typeof(IDamageable));
-        if (hit != null)
-        {
+        if (hit != null) {
             hit.TakeDamage(damage);
         }
+
         //it might be better to place code that destroys projectiles elsewhere
         //the biggest problem is for projectiles that are not damage sources
         if (gameObject.tag == "projectile")

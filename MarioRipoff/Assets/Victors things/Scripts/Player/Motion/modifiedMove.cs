@@ -67,11 +67,6 @@ public class modifiedMove : MonoBehaviour {
         jumpHeld = 0f;
     }
 
-    void jump() {
-        float jumping = minJump + jumpHeld;
-        rBody.AddForce(new Vector2(0, jumping), ForceMode2D.Impulse);
-    }
-
     void Flip() {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
@@ -81,7 +76,6 @@ public class modifiedMove : MonoBehaviour {
 
     void OnCollisionStay2D(Collision2D col) {
         //Checks distance between game object and contact position in x axis.
-        //.15 is hardcoded x distance threshold
         if (Mathf.Abs(gameObject.transform.position.x - col.contacts[0].point.x) > side_col_thresh_dist) {
             side_collision = true;
         }
