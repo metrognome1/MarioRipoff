@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ChangeMusic : MonoBehaviour {
     public AudioClip level1Music;
@@ -9,21 +10,30 @@ public class ChangeMusic : MonoBehaviour {
 
     private AudioSource source;
 
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+    
+    void OnDisable() {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
 
-    // Use this for initialization
     void Awake() {
         source = GetComponent<AudioSource>();
+
     }
 
 
-    void OnLevelWasLoaded(int level) {
-        if (level == 1) {
+    // Sets music depending on what levle was loaded.
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
+        if (scene.buildIndex == 1) {
             source.clip = level1Music;
             source.Play();
         }
-        if (level == 2) {
+        if (scene.buildIndex == 2) {
             source.clip = level2Music;
             source.Play();
         }
+            
     }
 }

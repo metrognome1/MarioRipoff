@@ -4,6 +4,11 @@ using System.Collections;
 public class modifiedMove : MonoBehaviour {
     public float maxSpeed = 6f;
     public bool facingRight = true;
+    public bool FacingRight {
+        get {
+            return facingRight;
+        }
+    }
     Animator anim;
     Rigidbody2D rBody;
 

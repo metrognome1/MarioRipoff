@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class camerafollow : MonoBehaviour {
     
@@ -7,43 +8,38 @@ public class camerafollow : MonoBehaviour {
     public GameObject focus;
     public float xDifference;
     public float yDifference;
-    public float movementThreshold = 2;
+    public float movementThreshold = 1.5f;
 
+    private modifiedMove modMove;
     private Transform player;
     private Vector3 moveTemp;
     private Rigidbody2D playerRg2D;
 
     void OnEnable() {
         playerHealth.onDeath += Disable;
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
     void OnDisable() {
         playerHealth.onDeath -= Disable;
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
-    void Start ()
-    {
+    void Start () {
         player = focus.transform;
         playerRg2D = focus.GetComponent<Rigidbody2D>();
     }
+
     void Update () {
         moveCamera();
     }
 
     private void moveCamera() {
-        if (player.transform.position.x > transform.position.x) {
-            xDifference = player.transform.position.x - transform.position.x;
-        }
-        else {
-            xDifference = transform.position.x - player.transform.position.x;
-        }
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) > 0)
+            xDifference = Mathf.Abs(player.transform.position.x - transform.position.x);
 
-        if (player.transform.position.y > transform.position.y) {
-            yDifference = player.transform.position.y - transform.position.y;
-        }
-        else {
-            yDifference = transform.position.y - player.transform.position.y;
-        }
+        if (Mathf.Abs(player.transform.position.y - transform.position.y) > 0)
+            yDifference = Mathf.Abs(player.transform.position.y - transform.position.y);
 
         if (xDifference >= movementThreshold || yDifference >= movementThreshold) {
             moveTemp = player.transform.position;
@@ -55,5 +51,10 @@ public class camerafollow : MonoBehaviour {
     //Disables this component
     void Disable() {
         this.enabled = false;
+    }
+
+    //Sets camera on player
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
+        transform.position = player.transform.position;
     }
 }

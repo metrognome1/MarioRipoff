@@ -9070,6 +9070,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 50000011912684174, guid: f2c1c32ef6581c447a9933191b8313ab,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2c1c32ef6581c447a9933191b8313ab, type: 2}
   m_IsPrefabParent: 0
